@@ -53,36 +53,20 @@ const projects = [
 
 export default function Portfolio() {
   const [modalData, setModalData] = useState(null);
-  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
-
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-  }, [darkMode]);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-white p-6 relative">
-      {/* Dark Mode Toggle */}
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="absolute top-6 right-6 text-sm bg-zinc-700 hover:bg-zinc-600 text-white px-3 py-1 rounded"
-      >
-        {darkMode ? 'Light Mode' : 'Dark Mode'}
-      </button>
-
+    <div className="min-h-screen bg-white text-black p-6 relative">
       {/* Header */}
       <h1 className="text-4xl font-bold mb-6 text-center">Aneeza Batool – Portfolio</h1>
 
       {/* About Me */}
       <section data-aos="fade-up" className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-        <p className="text-gray-800 dark:text-gray-300 text-lg leading-relaxed">
+        <p className="text-gray-800 text-lg leading-relaxed">
           I’m a passionate and detail-oriented BSIT student with hands-on experience in web and mobile development, 
           database optimization, and machine learning. I strive to create impactful digital solutions and constantly 
           seek new learning opportunities. I'm especially enthusiastic about blending creativity with logic in projects that matter.
@@ -123,7 +107,7 @@ export default function Portfolio() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="rounded-2xl p-6 bg-zinc-100 text-black dark:bg-zinc-800 dark:text-white border border-zinc-300 dark:border-zinc-700"
+              className="rounded-2xl p-6 bg-zinc-100 text-black border border-zinc-300"
             >
               <div className="overflow-x-auto flex space-x-4 pb-4 scrollbar-thin snap-x">
                 {project.images.map((img, i) => (
@@ -131,14 +115,14 @@ export default function Portfolio() {
                     <img
                       src={`/assets/${img}`}
                       alt={`${project.title} ${i + 1}`}
-                      className="object-contain w-full h-full rounded-xl border border-zinc-300 dark:border-zinc-700 transition-transform duration-300 hover:scale-105 cursor-pointer"
+                      className="object-contain w-full h-full rounded-xl border border-zinc-300 transition-transform duration-300 hover:scale-105 cursor-pointer"
                       onClick={() => setModalData(project)}
                     />
                   </div>
                 ))}
               </div>
               <h3 className="text-xl font-semibold mt-4 mb-2">{project.title}</h3>
-              <p className="text-gray-700 dark:text-gray-300">{project.desc}</p>
+              <p className="text-gray-700">{project.desc}</p>
             </div>
           ))}
         </div>
@@ -151,24 +135,24 @@ export default function Portfolio() {
           onClick={() => setModalData(null)}
         >
           <div
-            className="relative w-full max-w-6xl max-h-screen overflow-auto rounded-lg bg-zinc-900 text-white p-6"
+            className="relative w-full max-w-6xl max-h-screen overflow-auto rounded-lg bg-white text-black p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setModalData(null)}
-              className="absolute top-2 right-4 text-white text-3xl font-bold hover:text-red-400"
+              className="absolute top-2 right-4 text-black text-3xl font-bold hover:text-red-500"
             >
               &times;
             </button>
             <h2 className="text-2xl font-semibold mb-4">{modalData.title}</h2>
-            <p className="mb-4 text-gray-300">{modalData.desc}</p>
+            <p className="mb-4 text-gray-800">{modalData.desc}</p>
             <div className="flex flex-wrap gap-4">
               {modalData.images.map((img, idx) => (
                 <img
                   key={idx}
                   src={`/assets/${img}`}
                   alt={`${modalData.title} ${idx + 1}`}
-                  className="h-64 rounded border border-zinc-600 object-contain"
+                  className="h-64 rounded border border-zinc-400 object-contain"
                 />
               ))}
             </div>
