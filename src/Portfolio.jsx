@@ -11,37 +11,37 @@ const skills = [
 const projects = [
   {
     title: "Smart City Infrastructure Development",
-    desc: "Created detailed project documentation and Gantt charts using MS Project for a complete Smart City planning solution.",
+    desc: "Developed comprehensive Gantt charts and detailed project documentation using Microsoft Project. The solution outlines infrastructure planning for modern smart cities with timelines and resource allocations.",
     images: ["sci-1.JPG", "sci-2.JPG"],
   },
   {
     title: "Tempt. Bakeshop – E-Commerce Website",
-    desc: "React-based frontend site with 5 pages, including category filtering, search bar, and cart functionality.",
+    desc: "This is a multi-page e-commerce website featuring product categories, a dynamic search bar, and cart functionality. Built using React.js for the frontend and CSS for styling, the site is responsive and user-friendly. The project is bundled using Vite for fast builds and optimal performance.",
     images: ["tempt-1.JPG", "tempt-2.JPG", "tempt-3.JPG"],
   },
   {
     title: "Dental Assistant – Chatbot",
-    desc: "Built with Python and Tkinter using an intent-based system with JSON; includes error handling and GUI customization.",
+    desc: "Built an AI chatbot using Python, Tkinter, and JSON with NLP-based intent matching to handle dental queries. Features include a themed GUI, timestamped responses, FAQs, error handling, and structured information delivery.",
     images: ["dental-1.JPG"],
   },
   {
     title: "Globe Lingo – Flutter App",
-    desc: "Supports translation of 100+ languages, currency conversion, and global time zones with login/registration via SQLite.",
+    desc: "A cross-platform mobile app that supports translation of 100+ languages, currency conversion, and global time zones. Developed using Flutter and Dart, it also includes login and registration functionality using SQLite. REST APIs were integrated for live data retrieval, ensuring real-time utility across its modules.",
     images: ["gl-1.JPG", "gl-2.JPG", "gl-3.JPG", "gl-4.JPG", "gl-5.JPG"],
   },
   {
     title: "E-Commerce Database Optimization",
-    desc: "Used MSSQL Server with normalization, indexing, stored procedures, and triggers. Frontend built in ASP.NET Web Forms.",
+    desc: "Developed a complete e-commerce solution with secure login, product and order management, and role-specific dashboards. Integrated front-end and back-end functionality using ASP.NET and optimized SQL Server database performance through indexing, stored procedures, and triggers for fast, reliable data handling.",
     images: ["Admin-1.JPG", "cs-1.JPG", "cs-2.JPG", "productmgr-1.JPG", "productmgr-2.JPG", "sales-1.JPG", "sales-2.JPG"],
   },
   {
     title: "API Testing – JMeter",
-    desc: "Tested Cat Facts API, captured performance metrics, and generated HTML reports simulating multiple user requests.",
+    desc: "Simulated concurrent API requests, monitored response metrics, and generated HTML reports to evaluate the Cat Facts API's performance.",
     images: ["Jmeter-1.JPG", "Jmeter-2.JPG"],
   },
   {
     title: "Chronic Kidney Disease Prediction",
-    desc: "Trained Random Forest and Logistic Regression models with >98% accuracy on a CKD dataset using Python and sklearn.",
+    desc: "Developed a CKD prediction system using a medical dataset with 25 features by applying data preprocessing and training Random Forest and Logistic Regression models using Python, pandas, scikit-learn, and Tkinter. Achieved up to 98% accuracy, and deployed the Random Forest model in a desktop GUI application for real-time predictions.",
     images: ["ckd-1.JPG", "ckd-2.JPG", "ckd-3.JPG"],
   },
   {
