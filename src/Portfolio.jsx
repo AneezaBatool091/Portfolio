@@ -66,10 +66,10 @@ export default function Portfolio() {
               {project.images.map((img, i) => (
                 <div key={i} className="relative w-80 max-h-[500px] flex-shrink-0 snap-center">
                   <img
-                    src={`/src/assets/${img}`}
+                    src={`/assets/${img}`}
                     alt={`${project.title} ${i + 1}`}
                     className="object-contain w-full h-full rounded-xl border border-zinc-700 transition-transform duration-300 hover:scale-105 cursor-pointer"
-                    onClick={() => setModalImage(`/src/assets/${img}`)}
+                    onClick={() => setModalImage(`/assets/${img}`)}
                   />
                 </div>
               ))}
@@ -82,30 +82,29 @@ export default function Portfolio() {
 
       {/* Image Modal */}
       {modalImage && (
-  <div
-    className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-    onClick={() => setModalImage(null)}
-  >
-    <div
-      className="relative w-full max-w-6xl max-h-screen overflow-auto rounded-lg bg-black p-4"
-      onClick={(e) => e.stopPropagation()} // Prevent modal close on image click
-    >
-      <button
-        onClick={() => setModalImage(null)}
-        className="absolute top-2 right-4 text-white text-3xl font-bold z-10 hover:text-red-400"
-      >
-        &times;
-      </button>
-      <img
-        src={modalImage}
-        alt="Preview"
-        className="w-full h-auto object-contain mx-auto"
-        style={{ maxHeight: '90vh' }}
-      />
-    </div>
-  </div>
-)}
-
+        <div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          onClick={() => setModalImage(null)}
+        >
+          <div
+            className="relative w-full max-w-6xl max-h-screen overflow-auto rounded-lg bg-black p-4"
+            onClick={(e) => e.stopPropagation()} // Prevent modal close on image click
+          >
+            <button
+              onClick={() => setModalImage(null)}
+              className="absolute top-2 right-4 text-white text-3xl font-bold z-10 hover:text-red-400"
+            >
+              &times;
+            </button>
+            <img
+              src={modalImage}
+              alt="Preview"
+              className="w-full h-auto object-contain mx-auto"
+              style={{ maxHeight: '90vh' }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
