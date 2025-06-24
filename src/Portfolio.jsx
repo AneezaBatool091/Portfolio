@@ -2,10 +2,28 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// Icons from Heroicons
+import {
+  CodeIcon, DesktopComputerIcon, TerminalIcon, DeviceMobileIcon,
+  DatabaseIcon, CloudUploadIcon, ChartBarIcon, CogIcon
+} from '@heroicons/react/outline';
+
 const skills = [
-  "React.js", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js",
-  "Python", "SQL", "ASP.NET", "Flutter", "MS Project", "JMeter",
-  "Git & GitHub", "Postman", "Microsoft Excel"
+  { name: "React.js", icon: CodeIcon },
+  { name: "JavaScript", icon: CodeIcon },
+  { name: "HTML", icon: CodeIcon },
+  { name: "CSS", icon: CodeIcon },
+  { name: "Tailwind CSS", icon: CodeIcon },
+  { name: "Node.js", icon: TerminalIcon },
+  { name: "Python", icon: TerminalIcon },
+  { name: "SQL", icon: DatabaseIcon },
+  { name: "ASP.NET", icon: CloudUploadIcon },
+  { name: "Flutter", icon: DeviceMobileIcon },
+  { name: "MS Project", icon: ChartBarIcon },
+  { name: "JMeter", icon: DesktopComputerIcon },
+  { name: "Git & GitHub", icon: CogIcon },
+  { name: "Postman", icon: CogIcon },
+  { name: "Microsoft Excel", icon: CogIcon },
 ];
 
 const projects = [
@@ -60,6 +78,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-white text-black p-6 relative">
+
       {/* Header */}
       <h1 className="text-4xl font-bold mb-6 text-center">Aneeza Batool – Portfolio</h1>
 
@@ -76,28 +95,17 @@ export default function Portfolio() {
       {/* Skills */}
       <section data-aos="fade-up" className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Skills</h2>
-        <div className="flex flex-wrap gap-3">
-          {skills.map((skill, idx) => (
-            <span
-              key={idx}
-              className="bg-teal-600 text-white text-sm px-4 py-2 rounded-full shadow-sm"
-            >
-              {skill}
-            </span>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {skills.map((skill, idx) => {
+            const Icon = skill.icon;
+            return (
+              <div key={idx} className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-full shadow-sm">
+                <Icon className="h-5 w-5" />
+                <span className="text-sm">{skill.name}</span>
+              </div>
+            );
+          })}
         </div>
-      </section>
-
-      {/* Resume Download */}
-      <section data-aos="fade-up" className="mb-12 text-center">
-        <h2 className="text-2xl font-semibold mb-4">Resume</h2>
-        <a
-          href="/Aneeza-Batool-Resume.pdf"
-          download
-          className="inline-block bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-6 rounded transition"
-        >
-          Download Resume
-        </a>
       </section>
 
       {/* Projects */}
@@ -140,12 +148,12 @@ export default function Portfolio() {
           >
             <button
               onClick={() => setModalData(null)}
-              className="absolute top-2 right-4 text-black text-3xl font-bold hover:text-red-500"
+              className="absolute top-2 right-4 text-black text-3xl font-bold hover:text-red-400"
             >
               &times;
             </button>
             <h2 className="text-2xl font-semibold mb-4">{modalData.title}</h2>
-            <p className="mb-4 text-gray-800">{modalData.desc}</p>
+            <p className="mb-4 text-gray-700">{modalData.desc}</p>
             <div className="flex flex-wrap gap-4">
               {modalData.images.map((img, idx) => (
                 <img
