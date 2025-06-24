@@ -2,27 +2,10 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import {
-  CodeIcon, DesktopComputerIcon, TerminalIcon, DeviceMobileIcon,
-  DatabaseIcon, CloudUploadIcon, ChartBarIcon, CogIcon
-} from '@heroicons/react/outline';
-
 const skills = [
-  { name: "React.js", icon: CodeIcon },
-  { name: "JavaScript", icon: CodeIcon },
-  { name: "HTML", icon: CodeIcon },
-  { name: "CSS", icon: CodeIcon },
-  { name: "Tailwind CSS", icon: CodeIcon },
-  { name: "Node.js", icon: TerminalIcon },
-  { name: "Python", icon: TerminalIcon },
-  { name: "SQL", icon: DatabaseIcon },
-  { name: "ASP.NET", icon: CloudUploadIcon },
-  { name: "Flutter", icon: DeviceMobileIcon },
-  { name: "MS Project", icon: ChartBarIcon },
-  { name: "JMeter", icon: DesktopComputerIcon },
-  { name: "Git & GitHub", icon: CogIcon },
-  { name: "Postman", icon: CogIcon },
-  { name: "Microsoft Excel", icon: CogIcon },
+  "React.js", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js",
+  "Python", "SQL", "ASP.NET", "Flutter", "MS Project", "JMeter",
+  "Git & GitHub", "Postman", "Microsoft Excel"
 ];
 
 const projects = [
@@ -70,19 +53,36 @@ const projects = [
 
 export default function Portfolio() {
   const [modalData, setModalData] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
-  }, []);
+
+    const root = document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white p-6">
+    <div className="min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-white p-6 relative">
+      {/* Dark Mode Toggle */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="absolute top-6 right-6 text-sm bg-zinc-700 hover:bg-zinc-600 text-white px-3 py-1 rounded"
+      >
+        {darkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
+
+      {/* Header */}
       <h1 className="text-4xl font-bold mb-6 text-center">Aneeza Batool – Portfolio</h1>
 
       {/* About Me */}
       <section data-aos="fade-up" className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-        <p className="text-gray-300 text-lg leading-relaxed">
+        <p className="text-gray-800 dark:text-gray-300 text-lg leading-relaxed">
           I’m a passionate and detail-oriented BSIT student with hands-on experience in web and mobile development, 
           database optimization, and machine learning. I strive to create impactful digital solutions and constantly 
           seek new learning opportunities. I'm especially enthusiastic about blending creativity with logic in projects that matter.
@@ -92,16 +92,15 @@ export default function Portfolio() {
       {/* Skills */}
       <section data-aos="fade-up" className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Skills</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {skills.map((skill, idx) => {
-            const Icon = skill.icon;
-            return (
-              <div key={idx} className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-full shadow-sm">
-                <Icon className="h-5 w-5" />
-                <span className="text-sm">{skill.name}</span>
-              </div>
-            );
-          })}
+        <div className="flex flex-wrap gap-3">
+          {skills.map((skill, idx) => (
+            <span
+              key={idx}
+              className="bg-teal-600 text-white text-sm px-4 py-2 rounded-full shadow-sm"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -112,7 +111,7 @@ export default function Portfolio() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="rounded-2xl p-6 bg-zinc-800 border border-zinc-700"
+              className="rounded-2xl p-6 bg-zinc-100 text-black dark:bg-zinc-800 dark:text-white border border-zinc-300 dark:border-zinc-700"
             >
               <div className="overflow-x-auto flex space-x-4 pb-4 scrollbar-thin snap-x">
                 {project.images.map((img, i) => (
@@ -120,14 +119,14 @@ export default function Portfolio() {
                     <img
                       src={`/assets/${img}`}
                       alt={`${project.title} ${i + 1}`}
-                      className="object-contain w-full h-full rounded-xl border border-zinc-700 transition-transform duration-300 hover:scale-105 cursor-pointer"
+                      className="object-contain w-full h-full rounded-xl border border-zinc-300 dark:border-zinc-700 transition-transform duration-300 hover:scale-105 cursor-pointer"
                       onClick={() => setModalData(project)}
                     />
                   </div>
                 ))}
               </div>
               <h3 className="text-xl font-semibold mt-4 mb-2">{project.title}</h3>
-              <p className="text-gray-300">{project.desc}</p>
+              <p className="text-gray-700 dark:text-gray-300">{project.desc}</p>
             </div>
           ))}
         </div>
